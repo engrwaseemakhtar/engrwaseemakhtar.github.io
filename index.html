@@ -5,6 +5,81 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Academic Portfolio</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        nav ul {
+            background-color: #444;
+            color: white;
+            list-style-type: none;
+            margin: 0;
+            overflow: hidden;
+            padding: 0;
+            text-align: center;
+        }
+
+        nav ul li {
+            display: inline;
+        }
+
+        nav ul li a {
+            color: white;
+            display: inline-block;
+            padding: 10px 20px;
+            text-decoration: none;
+        }
+
+        nav ul li a:hover {
+            background-color: #555;
+        }
+
+        section {
+            display: none;
+            padding: 20px;
+        }
+
+        section.active {
+            display: block;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+        }
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const sections = document.querySelectorAll("section");
+            const navLinks = document.querySelectorAll("nav ul li a");
+
+            navLinks.forEach(link => {
+                link.addEventListener("click", function(event) {
+                    event.preventDefault();
+                    const targetId = this.getAttribute("href").substring(1);
+                    sections.forEach(section => {
+                        if (section.id === targetId) {
+                            section.classList.add("active");
+                        } else {
+                            section.classList.remove("active");
+                        }
+                    });
+                });
+            });
+        });
+    </script>
 </head>
 <body>
     <header>
@@ -12,7 +87,6 @@
     </header>
     <nav>
         <ul>
-            <li><a href="#profile">Education</a></li>
             <li><a href="#education">Education</a></li>
             <li><a href="#publications">Publications</a></li>
             <li><a href="#contact">Contact</a></li>
@@ -23,7 +97,7 @@
             <li><a href="#seminars">Seminars</a></li>
         </ul>
     </nav>
-    <section id="education">
+    <section id="education" class="active">
         <h2>Education</h2>
         <p>Details about my educational background.</p>
     </section>
